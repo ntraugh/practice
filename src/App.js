@@ -1,5 +1,8 @@
 import './App.css';
 import { useState } from 'react';
+import List from "./List";
+import Form from "./Form";
+
 
 function App() {
 
@@ -23,21 +26,8 @@ function App() {
   return (
     <div className="App">
       <h1>Form</h1>
-
-      <form onSubmit={handleSubmit}>
-        <input value={input} placeholder='Search for something' onChange={(e) => setInput(e.target.value)}></input>
-        <button type='submit'>Submit</button>
-      </form>
-      {console.log(list)}
-      {list.map((list, idx) => (
-        <div key={idx}>
-          {list}
-          <button onClick={() => deleteMe(idx)}>
-            Delete Me
-          </button>
-        </div>
-      ))}
-      
+      <Form input={input} handleSubmit={handleSubmit} setInput={setInput}/>
+      <List list={list} removeItem={deleteMe} />
     </div>
   );
 }
