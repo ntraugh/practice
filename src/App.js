@@ -4,7 +4,6 @@ import List from "./List";
 import Form from "./Form";
 
 
-
 function App() {
 
   const [input, setInput] = useState("");
@@ -17,6 +16,8 @@ function App() {
   //     setInput("")
   //   }
   // }
+
+  
 
   const deleteMe = (idx) => {
 
@@ -37,17 +38,35 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Form</h1>
+      <h2>Table</h2>
       {/* <Form input={input} handleSubmit={handleSubmit} setInput={setInput}/> */}
       {/* <List list={list} removeItem={deleteMe} /> */}
-      {list.map((person) => {
-        const {name, username, id} = person
-        return <div key={id}>
-          <h2>Name: {name}</h2>
-          <h2>User Name: {username}</h2>
-          <button onClick={() => deleteMe(id)}>Delete</button>
-        </div>
-      })}
+      <table style={{"marginLeft": "auto", "marginRight": "auto"}}>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>UserName</th>
+            <th>Email</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        {list.map((person, idx) => (
+        <tbody>
+          <>
+            <tr>
+              <td key={idx}>{person.id}</td>
+              <td key={idx}>{person.name}</td>
+              <td key={idx}>{person.username}</td>
+              <td key={idx}>{person.email}</td>
+              <td key={idx}><button onClick={() => deleteMe(person.id)}>Delete</button></td>
+            </tr>
+          </>
+        </tbody>
+        ))}
+       
+
+      </table>
     </div>
   );
 }
