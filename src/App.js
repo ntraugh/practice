@@ -41,7 +41,7 @@ function App() {
       <h2>Table</h2>
       {/* <Form input={input} handleSubmit={handleSubmit} setInput={setInput}/> */}
       {/* <List list={list} removeItem={deleteMe} /> */}
-      <table style={{"marginLeft": "auto", "marginRight": "auto"}}>
+      <table style={{"marginLeft": "auto", "marginRight": "auto", "padding": "10px"}}>
         <thead>
           <tr>
             <th>ID</th>
@@ -51,15 +51,15 @@ function App() {
             <th>Delete</th>
           </tr>
         </thead>
-        {list.map((person, idx) => (
-        <tbody>
+        {list.map((person) => (
+        <tbody key={person.id}>
           <>
-            <tr>
-              <td key={idx}>{person.id}</td>
-              <td key={idx}>{person.name}</td>
-              <td key={idx}>{person.username}</td>
-              <td key={idx}>{person.email}</td>
-              <td key={idx}><button onClick={() => deleteMe(person.id)}>Delete</button></td>
+            <tr key={person.id}>
+              <td style={{"padding": "10px"}}>{person.id}</td>
+              <td >{person.name}</td>
+              <td >{person.username}</td>
+              <td >{person.email}</td>
+              <td ><button onClick={() => deleteMe(person.id)}>Delete</button></td>
             </tr>
           </>
         </tbody>
